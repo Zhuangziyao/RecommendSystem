@@ -1,0 +1,171 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2017-06-26 01:13:47
+ * @version $Id$
+ */
+
+html{
+	height: 100%;
+}
+
+body{
+	font-size: 10px;
+	font-family: "微软雅黑";
+	height: 100%;
+}
+
+#top-btnlist{
+	font-size: 20px;  
+    position: absolute;  
+    top: 15px;  
+    right: 20px; 
+}
+
+#top-btnlist:hover{
+	cursor: pointer;
+}
+
+#top-btnlist,
+#normalTNav,
+#top-btnlist-msg,
+.maker{
+	display: none;
+}
+
+.top-nav{
+	margin-top: 5px;
+    border-bottom-style: none;  
+}
+
+.top-nav a{
+	color: #999999;
+	font-weight: bold;
+}
+
+.top-find{
+	/*border:1px solid black;*/
+	width: 20%;
+	position: fixed; 
+	height: 5%;
+	margin-top: 5px;
+	margin-left: 15%;
+	/*background-color: white;*/
+	position: fixed;
+}
+
+.top-find-text{
+	width: 80%;
+	height: 100%;
+	position: left;
+	margin-top: 0px;
+	/*border:1px solid black;*/
+}
+.top-find-search{
+	position: right;
+	width: 18%;
+	height: 100%;
+	/*margin-top: 5px;*/
+}
+
+#login a{
+	color: #F0AD4E;
+	font-weight: bold;
+}
+
+#top-btnlist-msg{ 
+    position: fixed;    
+    width: 40%;  
+    right: -539.6px;
+    background-color: white;
+    filter:alpha(opacity=80);  
+    -moz-opacity: 0.8;  
+    -khtml-opacity: 0.8;  
+    opacity: 0.8;  
+    top: 50px;
+
+}
+
+#top-btnlist-msg a{
+	display: block;  
+    text-decoration: none;  
+    text-indent: 2em;
+    height: 40px;  
+    line-height: 40px;
+    border-left: 1px solid #EED2EE;
+    border-bottom: 1px solid #EED2EE;
+}
+
+#top-btnlist-msg a:hover{
+	cursor: pointer;
+}
+
+#top-btnlist-msg a{
+	color: #999999;
+	font-weight: bold;
+}
+
+.footer{
+	background-color: #F0AD4E;
+	width: 100%;
+}
+
+.footer-container{
+	padding-top: 35px;
+	padding-bottom: 30px;
+}
+
+#footer-container-line{
+	text-align: center;
+	/*color: white;*/
+	font-weight: bold;
+	font-size: 5px;
+}
+
+#footer-container-line h4{
+	margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+.maker{
+	height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color : gray;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+}
+
+.bottom-text{
+	position: fixed;
+	/*border: 1px solid black;*/
+	width: 100%;
+	height: 20%;
+	font-size: 5px;
+}
+.bottom-text-1,
+.bottom-text-2,
+.bottom-text-3,
+.bottom-text-4{
+	width: 5%;
+	float: left;
+	margin-left: 2%;
+	margin-top: 1%;
+	border-right: 1px solid black;
+
+}
+.bottom-text-5{
+	width: 5%;
+	float:  left;
+	margin-left: 2%;
+	margin-top: 1%;
+	border-right: 0px solid black;
+
+}

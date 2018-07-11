@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/aop 
+						http://www.springframework.org/schema/aop/spring-aop.xsd
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/tx 
+						http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 自动扫描包 -->
+    <context:component-scan base-package="com.recommend"/>
+    <!-- 引入数据库配置信息 -->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:jdbc.properties"/>
+    </bean>						
+    <!-- dbcp数据源配置信息 -->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+    	<property name="driverClassName" value="${jdbc.driver}"/>
+    	<property name="url" value="${jdbc.url}"/>
+    	<property name="username" value="${jdbc.username}"/>
+    	<property name="password" value="${jdbc.password}"/> 
+    	<!-- 初始化连接大小 -->
+    	<property name="initialSize" value="${initialSize}"></property>
+    	<!-- 连接池最大数量 -->
+    	<property name="maxTotal" value="${maxTotal}"></property>
+    	<!-- 连接池最大空闲 -->
+    	<property name="maxIdle" value="${maxIdle}"></property>
+    	<!-- 连接池最小空闲 -->
+    	<property name="minIdle" value="${minIdle}"></property>
+    	<!-- 获取连接最大等待时间 -->
+    	<property name="maxWaitMillis" value="${maxWaitMillis}"></property>
+    	<!-- 事务是否自动提交 -->
+    	<property name="defaultAutoCommit" value="${defaultAutoCommit}"></property>   
+    </bean>
+    
+    <!-- spring和mybatis整合，不再需要mybatis映射文件 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 自动扫描mapping.xml文件 -->
+        <property name="mapperLocations" value="classpath:com/recommend/mapper/*.xml"></property>
+    </bean>
+    
+    <!-- mapper接口调用方式要用 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.recommend.mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+    <!-- 采用实体类dao调用方式要用，在dao里用@resource（name=“sqlsessiontemplate”）方式得到 -->
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="sqlSessionFactory"/>
+    </bean>
+    
+    <!-- 事务管理器 -->
+    <bean id="transcationManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    
+    <!-- aop事务管理方法规则 -->
+    
+    <!-- aop事务处理 -->
+    <!-- autowired需要用的bean -->
+    <bean id="courseDao" class="com.recommend.dao.CourseDao"></bean>
+    <bean id="courseService" class="com.recommend.service.impl.CourseServiceImpl"></bean>
+    <bean id="userService" class="com.recommend.service.impl.UserServiceImpl"></bean>
+    <bean id="learnService" class="com.recommend.service.impl.LearnServiceImpl"></bean>
+    <bean id="learnDao" class="com.recommend.dao.LearnDao"></bean>
+    <bean id="personDao" class="com.recommend.dao.PersonDao"></bean>
+    <bean id="personService" class="com.recommend.service.impl.PersonServiceImpl"></bean>
+    <bean id="searchService" class="com.recommend.service.impl.SearchServiceImpl"></bean>
+    <bean id="searchDao" class="com.recommend.dao.SearchDao"></bean>
+    <bean id="commendService" class="com.recommend.service.impl.CommendServiceImpl"></bean>
+</beans>

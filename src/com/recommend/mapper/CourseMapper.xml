@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.recommend.mapper.CourseMapper">
+    <resultMap id="CourseResultMap" type="com.recommend.entity.Course">
+        <id column="courseid" property="CourseId" jdbcType="VARCHAR"/>
+        <result column="coursename" property="CourseName" jdbcType="VARCHAR"/>
+        <result column="tags" property="CourseTag" jdbcType="VARCHAR"/>
+        <result column="courseimg" property="CourseImg" jdbcType="VARCHAR"/>
+        <result column="introduction" property="Introduction" jdbcType="LONGVARCHAR"/>
+        <result column="learnednumber" property="LearnedNumber" jdbcType="INTEGER"/>
+        <result column="assess" property="Assess" jdbcType="VARCHAR"/>
+        <result column="coursetime" property="CourseTime" jdbcType="INTEGER"/>
+        <result column="classify" property="Classify" jdbcType="VARCHAR"/>
+        <result column="teacher" property="CourseTeacher" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="SimpleCourseMap" type="com.recommend.entity.Course">
+        <result column="coursename" property="CourseName" jdbcType="VARCHAR"/>
+        <result column="courseimg" property="CourseImg" jdbcType="VARCHAR"/>
+        <result column="learnednumber" property="LearnedNumber" jdbcType="INTEGER"/>
+    </resultMap>
+    
+    <select id="getCourseById" parameterType="String" resultMap="CourseResultMap">
+        select coursename,courseimg,teacher,coursetime,learnednumber,introduction,tags
+        from course
+        where courseid=#{courseid}
+    </select>
+    
+    <select id="getCourseByClassify" parameterType="String" resultType="com.recommend.entity.Course">
+        select courseid,coursename,courseimg,learnednumber
+        from course
+        where classify like "%"#{classify}"%"   
+    </select>
+    
+    <select id="getClassify" resultType="String">
+        select distinct classify
+        from course
+    </select>
+    
+    <select id="getCourseIdByCourseName" parameterType="String" resultType="String">
+        select courseid
+        from course
+        where coursename=#{coursename}
+    </select>
+    
+    <select id="getCourseBySearchName" parameterType="String" resultType="com.recommend.entity.Course">
+        select courseid,coursename,courseimg
+        from course
+        where coursename like "%"#{coursename}"%"
+    </select>
+    
+</mapper>

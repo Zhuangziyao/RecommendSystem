@@ -1,0 +1,55 @@
+@charset "UTF-8";
+body {
+		font-family: "微软雅黑";
+		line-height:20px
+	} 
+.ui-all{
+		background-color: #E6E6E6;
+		border:0px;
+		margin: auto;
+		padding: 0px;
+	}
+.page-header{
+	text-align: center;
+}
+	
+	
+.btn-default{
+		margin-left: 20px;
+		font-size: 15px;
+	}
+.body-title-1{
+	text-align: center;
+}
+
+.page-header{
+	text-align: center;
+}
+#page-header-last{
+	text-align: right;
+}
+.list-group-item-text{
+	font-size: 10px;
+}
+
+.list-group-item-text-time{
+	float: right;
+}
+.list-group-item-word{
+	margin-top: 10px;
+}
+.list-notes{
+	width: 90%;
+	height: 200px;
+	margin-left: 5%;
+	margin-top: 10px;
+}
+.list-notes-button{
+	float: right; 
+	margin-top: 20px;
+	margin-right: 5%;
+}
+
+.list-group-text{
+	width: 65%;
+}

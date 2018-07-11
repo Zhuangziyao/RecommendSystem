@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.recommend.mapper.UserMapper">
+    <!-- 查询用户是否存在 -->
+    <select id="checkUserIsExist" parameterType="String" resultType="String">
+        select userid
+        from user
+        where userid=#{userid}
+    </select>	
+    
+    <!-- 判断是否能登录 -->
+    <select id="getUserByIdAndPwd" parameterType="hashMap" resultType="String">
+        select userid
+        from user
+        where userid=#{userid} and userpwd=#{userpwd}
+    </select>
+    
+    <!-- 添加用户 -->
+    <insert id="insertUser" parameterType="hashMap">
+        insert into user(userid,userpwd,username,email,phonenumber)
+        values(#{id},#{password},#{name},#{email},#{phonenumber})
+    </insert>
+    
+    <update id="setInfo" parameterType="hashMap">
+        update user
+        set username=#{name},sex=#{sex},birthday=#{birthday},education=#{education},hobby=#{hobby},question=#{question},wantlearn=#{wantlearn},inauguralexperience=#{inaugural},developmentdirection=#{development},wantmajor=#{wantmajor}
+        where userid=#{userid}
+    </update>
+    
+    <select id="getAutoIdByUserId" parameterType="String" resultType="Integer">
+        select autoid
+        from user
+        where userid=#{userid}
+    </select>
+</mapper>

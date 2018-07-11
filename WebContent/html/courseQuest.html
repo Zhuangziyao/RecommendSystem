@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="quest-main" ng-style="questdiv">
+        	<div class="quest-box">
+                
+                <div class="quest-question">
+                     <div >
+            <p>您对本次课程学习的满意度为：</p>
+                <input type="radio" name="a1" ng-value="" ng-model="q1">非常满意 
+                <input type="radio" name="a1" ng-value="" ng-model="q1">基本满意
+            <input type="radio" name="a1" ng-value="" ng-model="q1">不太满意
+                    </div>
+    </div>
+    
+    <div class="quest-question">
+    <div >
+            <div>
+               <p>您觉得本次学习的难易程度为：</p>
+                <input type="radio" name="a2" ng-value="" ng-model="q2">简单 
+                <input type="radio" name="a2" ng-value="" ng-model="q2">一般
+            <input type="radio" name="a2" ng-value="" ng-model="q2">适中
+            </div>
+    </div>
+                </div>
+   
+                <div class="quest-question">
+    <div >
+            <p>您觉得本次课程的时长为：</p>
+                <input type="radio" name="a3" ng-value="" ng-model="q3">过长 
+                <input type="radio" name="a3" ng-value="" ng-model="q3">适中
+            <input type="radio" name="a3" ng-value="" ng-model="q3">较短
+    </div>
+                </div>
+
+                <div class="quest-question">
+    <div >
+            <div>
+                 <p>您觉得本次课程对您哪方面帮助最大：</p>
+                <input type="radio" name="a4" ng-value="" ng-model="q4">专业技术 
+                <input type="radio" name="a4" ng-value="" ng-model="q4">交际沟通
+            <input type="radio" name="a4" ng-value="" ng-model="q4">管理能力
+            </div>
+                    </div>
+    </div>
+   
+                <div class="quest-question">
+   <div >
+    <p>您还希望学习哪方面的课程:</p>
+    <input type="checkbox" ng-checked="all">1
+    <input type="checkbox" ng-checked="all">2
+    <input type="checkbox" ng-checked="all">3<br>
+   <input type="checkbox" ng-checked="all">其它
+   <input type="text" ng-model="">
+    </div>
+                </div>
+
+    <div >
+       <button ng-click="">完成</button>
+   </div>
+            </div>
+        </div>
+</body>
+</html>
